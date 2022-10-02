@@ -1,0 +1,103 @@
+.Weather .region {
+  font-size: 33px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  color: #12643e;
+}
+
+.Weather ul {
+  padding: 0%;
+  font-size: 16px;
+  font-weight: bold;
+  list-style-type: none;
+}
+
+.Weather .units,
+a {
+  font-size: 20px;
+  text-decoration: none;
+  color: black;
+}
+
+.Weather .mainTemp {
+  font-size: larger;
+}
+
+.Weather .small {
+  text-align: center;
+  font-size: 14px;
+  margin-left: 310px;
+}
+
+.Weather .sky {
+  font-size: 20px;
+  margin-top: -5px;
+}
+
+.Weather .d-flex {
+  padding-top: 5px;
+}
+
+.col-2 {
+  margin-top: 20px;
+}
+
+.Weather .col2 {
+  font-size: 33px;
+  font-weight: 500;
+  color: #105837;
+}
+
+.Weather .col-3 {
+  text-align: center;
+  font-size: large;
+  color: #105837;
+  padding: 0;
+  max-width: 90px;
+  margin: 0 5px;
+}
+
+.Weather .col-3:hover {
+  background: #fff;
+  transition: all 200ms ease-in-out;
+}
+
+.Weather .weatherApp {
+  display: block;
+  margin: 20px 310px;
+  margin-bottom: 10px;
+  padding: 20px;
+  background: radial-gradient(
+    592px at 48.2% 50%,
+    rgba(255, 255, 249, 0.6) 0%,
+    rgb(160, 199, 254) 74.6%
+  );
+  border: 2px solid #4049aa;
+  max-width: 700px;
+  border-radius: 5px;
+}
+
+.Weather .weather-icon {
+  height: 60px;
+  width: 60px;
+  margin-top: 10px;
+}
+
+.Weather .source {
+  color: #f3f6f9;
+  font-size: 14px;
+}
+
+.Weather .source:hover {
+  color: black;
+}
+
+.Weather .d-flex .active {
+  color: black;
+  cursor: default;
+}
+
+.Weather footer {
+  text-align: center;
+  margin-top: 25px;
+}
