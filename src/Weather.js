@@ -17,7 +17,7 @@ export default function Weather() {
         <div className="weatherApp">
           <form id="cityForm">
             <div className="row">
-              <div className="col-7">
+              <div className="col-8">
                 <input
                   type="text"
                   id="cityInfo"
@@ -29,7 +29,7 @@ export default function Weather() {
                 <input
                   type="submit"
                   id="button"
-                  className="form-control btn btn-primary shadow"
+                  className="form-control btn btn-primary shadow w-100"
                   value="Search"
                 ></input>
               </div>
@@ -37,7 +37,7 @@ export default function Weather() {
                 <input
                   type="submit"
                   id="current-button"
-                  className="form-control btn btn-success shadow"
+                  className="form-control btn btn-success shadow w-100"
                   value="Current"
                 ></input>
               </div>
@@ -65,14 +65,16 @@ export default function Weather() {
                   <span className="mainTemp" id="temperature">
                     {Data.temperature}
                   </span>
-                  <span className="units">
-                    <a href="/" id="celsius" className="active">
-                      °C
-                    </a>
-                    |
-                    <a href="/" id="fahrenheit">
-                      °F
-                    </a>
+                  <span className="descriptions">
+                    <span className="units">
+                      <a href="/" id="celsius" className="active">
+                        °C{' '}
+                      </a>
+                      |{' '}
+                      <a href="/" id="fahrenheit">
+                        °F
+                      </a>
+                    </span>
                     <div className="sky" id="description">
                       {Data.description}
                     </div>

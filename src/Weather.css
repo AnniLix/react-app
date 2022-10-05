@@ -12,7 +12,7 @@
   list-style-type: none;
 }
 
-.Weather .units,
+.Weather .descriptions,
 a {
   font-size: 20px;
   text-decoration: none;
@@ -95,6 +95,11 @@ a {
 .Weather .d-flex .active {
   color: black;
   cursor: default;
+}
+
+.Weather .col2 .units {
+  position: relative;
+  top: -15px;
 }
 
 .Weather footer {
