@@ -1,38 +1,47 @@
 import React, { useState } from 'react';
-import FormattedDate from './FormattedDate';
+import WeatherSearch from './WeatherSearch';
 import axios from 'axios';
 import './Weather.css';
 
-export default function Weather() {
+export default function Weather(props) {
   const [ready, Setready] = useState(false);
   const [weatherData, setWeatherData] = useState({});
+  const [city, setCity] = useState(props.defaultCity);
   function handleResponse(response) {
     console.log(response.data);
     setWeatherData({
-     temperature: response.data.main.temp,
-    humidity: response.data.main.temp,
-    date: new Date(response.data.dt * 1000),
-    wind: response.data.wind.speed,
-    city: response.data.name,
-    description: response.data.weather[0].description
+      temperature: response.data.main.temp,
+      humidity: response.data.main.temp,
+      date: new Date(response.data.dt * 1000),
+      wind: response.data.wind.speed,
+      city: response.data.name,
+      iconUrl: 'https://www.picng.com/upload/sun/png_sun_7638.png',
+      description: response.data.weather[0].description,
     });
     Setready(true);
   }
-  let Data = {
-    //city: 'Paris',
-    //date: 'Thursday 15:05',
-    //description: 'Sunny',
-    img: 'https://www.picng.com/upload/sun/png_sun_7638.png',
-    //humidity: 50,
-    //wind: 6,
-  };
+
+  function search() {
+    const apiKey = 'c0578053464993e45f5ff6d67e9b2dbc';
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search(city);
+  }
+
+  function handleSityChange(event) {
+    setCity(event.target.value);
+  }
 
   if (ready) {
     return (
       <div className="Weather">
         <div className="container">
           <div className="weatherApp">
-            <form id="cityForm">
+            <form onSubmit={handleSubmit} id="cityForm">
               <div className="row">
                 <div className="col-8">
                   <input
@@ -40,6 +49,7 @@ export default function Weather() {
                     id="cityInfo"
                     className="form-control shadow border-0"
                     placeholder="Enter a city"
+                    onChange={handleSityChange}
                   ></input>
                 </div>
                 <div className="col-3">
@@ -60,58 +70,7 @@ export default function Weather() {
                 </div>
               </div>
             </form>
-            <div className="row">
-              <div className="col-6">
-                <h1 className="region">{weatherData.city}</h1>
-                <ul id="date">
-                  <li></li>
-                  <li>
-                    <FormattedDate date={weatherData.date} />
-                    </li>
-                </ul>
-              </div>
-              <div className="col-6">
-                <div className="d-flex">
-                  <img
-                    src={Data.img}
-                    alt="sun"
-                    className="weather-icon float-left"
-                    id="icon"
-                    width="40"
-                    height="40"
-                  />
-                  <div className="col2">
-                    <span className="mainTemp" id="temperature">
-                      {Math.round(weatherData.temperature)}
-                    </span>
-                    <span className="descriptions">
-                      <span className="units">
-                        <a href="/" id="celsius" className="active">
-                          °C{' '}
-                        </a>
-                        |{' '}
-                        <a href="/" id="fahrenheit">
-                          °F
-                        </a>
-                      </span>
-                      <div className="sky" id="description">
-                        {weatherData.description}
-                      </div>
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="col-3">
-                Wind
-                <br />
-                <span id="wind">{Math.round(weatherData.wind)}</span> km/h
-              </div>
-              <div className="col-3">
-                Humidity
-                <br />
-                <span id="humidity">{Math.round(weatherData.humidity)}</span>%
-              </div>
-            </div>
+            <WeatherSearch data={weatherData} />
             <br />
             <footer>Coded by Anni Lix</footer>
           </div>
@@ -130,11 +89,7 @@ export default function Weather() {
       </div>
     );
   } else {
-    const apiKey = 'c0578053464993e45f5ff6d67e9b2dbc';
-    let city = "Paris"
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
+    search();
+    return '...';
   }
-
-  return '...';
 }
