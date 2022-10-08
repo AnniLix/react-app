@@ -15,7 +15,7 @@ export default function Weather(props) {
       date: new Date(response.data.dt * 1000),
       wind: response.data.wind.speed,
       city: response.data.name,
-      iconUrl: 'https://www.picng.com/upload/sun/png_sun_7638.png',
+      icon: response.data.weather[0].icon,
       description: response.data.weather[0].description,
     });
     Setready(true);

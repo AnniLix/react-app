@@ -77,10 +77,11 @@ a {
   border-radius: 5px;
 }
 
-.Weather .weather-icon {
+.Weather canvas {
   height: 60px;
   width: 60px;
   margin-top: 10px;
+  margin-right: 10px;
 }
 
 .Weather .source {

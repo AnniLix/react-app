@@ -1,5 +1,6 @@
-import React from "react";
+import React from 'react';
 import FormattedDate from './FormattedDate';
+import WeatherIcon from './WeatherIcon';
 
 export default function WeatherSearch(props) {
   return (
@@ -15,14 +16,9 @@ export default function WeatherSearch(props) {
       </div>
       <div className="col-6">
         <div className="d-flex">
-          <img
-            src={props.data.iconUrl}
-            alt="sun"
-            className="weather-icon float-left"
-            id="icon"
-            width="40"
-            height="40"
-          />
+          <div className="float-left">
+            <WeatherIcon code={props.data.icon} />
+          </div>
           <div className="col2">
             <span className="mainTemp" id="temperature">
               {Math.round(props.data.temperature)}
