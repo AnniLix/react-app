@@ -83,7 +83,15 @@ export default function Weather(props) {
             >
               Open-source code
             </a>
-            , by Anni Lix
+            , coded by Anni Lix and{' '}
+            <a
+              href="https://symphonious-taiyaki-117614.netlify.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="source"
+            >
+              hosted on Netlify
+            </a>
           </small>
         </div>
       </div>
